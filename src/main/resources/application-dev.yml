@@ -1,0 +1,69 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: "" # MYSQL数据库连接地址
+    username: "" # MYSQL数据库用户名
+    password: "" # MYSQL数据库密码
+
+  redis:
+    host: "127.0.0.1" # Redis数据库地址
+    port: 6379 # Redis数据库端口号
+    database: 0
+    password: "" # Redis数据库密码
+    lettuce:
+      pool:
+        max-active: 20
+        max-idle: 16
+        max-wait: 1000ms
+        min-idle: 10
+
+logging:
+  level:
+    root: ERROR
+    im.crossim: INFO
+
+swagger:
+  enabled: true
+
+sms:
+  driver: "" # 短信驱动器
+  gateway: "" # 短信网关地址
+  username: "" # 短信网关用户名
+  password: "" # 短信网关密码
+  sign: "" # 短信的签名
+
+user-service:
+  im-node-enabled: true # 是否连接到IM节点
+  im-config:
+    group-server-url: "" # 群组服务器管理API地址
+    group-server-password: "" # 群组服务器管理API密码
+  sms:
+    enabled: false # 是否将验证码短信发送至短信网关
+    sms-code-size: 6 # 短信验证码的长度
+    sms-code-duration-seconds: 900 # 短信验证码的有效时间，默认：15分钟
+    sms-code-period-seconds: 60 # 同一个手机号码两次发送的允许间隔时间，默认：1分钟
+  login-config:
+    temp-directory: /temp # 临时文件的文件上传目录
+    user-portrait-directory: /portrait # 用户头像文件的文件上传目录
+    group-portrait-directory: /portrait # 群组头像文件的文件上传目录
+    web-rtc-base: ""
+    web-rtc-host: ""
+    api-upload-url: "" # 提供给客户端进行文件上传的API的地址
+    file-url-prefix: "" # 文件上传后的地址的前缀
+    main-dapp: "" # 主DAPP的DAPP INFO，由BASE64编码
+    main-page-url: "" # 主页的地址
+  sensitive-keyword-config:
+    file-url: "" # 敏感关键词文件的地址，文本文件（.txt），每个敏感关键词占据文本文件的一行
+    version: 1 # 敏感关键词文件的版本
+  dapp-black-list-config:
+    file-url: "" # 小程序黑名单文件的地址，文本文件（.txt），由一系列域名与IP地址构成，每个域名或IP地址占据文本文件的一行
+    version: 1 # 小程序黑名单文件的版本
+  crypto-config:
+    mode: 1 # 数据库内敏感字段的加密模式，0=无加密；1=BASE64编码；2=AES加密
+    key: "" # 当mode为2时，为AES加密的秘钥
+  app-config:
+    download-page-url: "" # 客户端下载页面的地址
+    version: 1 # 客户端的版本
+    force: false # 是否强制客户端更新到最新版本
+  recommended-osn-ids:
+    - "" # 推荐好友列表的OSN ID

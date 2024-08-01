@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="im.crossim.im.mapper.ImNodeConfigMapper">
+
+    <select id="getAvailableConfig" resultType="im.crossim.im.entity.ImNodeConfigEntity">
+        SELECT * FROM t_im_node_config AS t
+            WHERE t.enabled = 1
+                AND t.volume <![CDATA[ < ]]> t.max_volume
+            ORDER BY t.order_no
+            LIMIT 0, 1
+    </select>
+
+    <select id="getLowestVolumeConfig" resultType="im.crossim.im.entity.ImNodeConfigEntity">
+        SELECT * FROM t_im_node_config AS t
+            WHERE t.enabled = 1
+            ORDER BY t.volume
+            LIMIT 0, 1
+    </select>
+
+    <update id="incVolume">
+        UPDATE t_im_node_config
+            SET volume = volume + 1
+            WHERE id = #{id}
+    </update>
+
+</mapper>

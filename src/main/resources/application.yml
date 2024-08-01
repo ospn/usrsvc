@@ -1,0 +1,20 @@
+server:
+  port: 9314
+  servlet:
+    context-path: /user-service
+spring:
+  profiles:
+    active: dev
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+
+  application:
+    name: user-service-api
+  servlet:
+    multipart.maxFileSize: 15MB
+    multipart.maxRequestSize: 20MB
+
+mybatis-plus:
+  type-handlers-package: im.crossim.config.mybatis.handler
